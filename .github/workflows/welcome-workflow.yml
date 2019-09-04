@@ -12,5 +12,5 @@ jobs:
         with:
           # Shallow clone
           fetch-depth: 1
-      - run: npm install --production-only
+      - run: npm install --production
       - run: npm start
