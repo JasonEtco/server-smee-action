@@ -16,16 +16,12 @@ const events = smee.start()
 
 events.addEventListener('message', async evt => {
   const data = JSON.parse(evt.data).body
+  console.log(data)
   await axios.post('https://smee.io/hi-jeff', data)
 })
 
 app.get('/hello', (req, res) => res.send('Hello!'))
 app.post('/events', async (req, res) => {
-  await axios.post('https://smee.io/hi-jeff', {
-    firstName: 'Fred',
-    lastName: 'Flintstone'
-  })
-  console.log(req.body)
   res.sendStatus(200)
 })
 
