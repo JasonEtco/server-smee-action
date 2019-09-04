@@ -1,4 +1,5 @@
 const express = require('express')
+const axios = require('axios')
 const SmeeClient = require('smee-client')
 const app = express()
 
@@ -13,12 +14,17 @@ const smee = new SmeeClient({
 
 const events = smee.start()
 
-// events.addEventListener('message', evt => {
-//   console.log(evt)
-// })
+events.addEventListener('message', evt => {
+  const data = JSON.parse(evt.data).body
+  await axios.post('https://smee.io/hi-jeff', data)
+})
 
 app.get('/hello', (req, res) => res.send('Hello!'))
 app.post('/events', (req, res) => {
+  await axios.post('https://smee.io/hi-jeff', {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  })
   console.log(req.body)
   res.sendStatus(200)
 })
