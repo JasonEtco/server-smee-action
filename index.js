@@ -3,7 +3,7 @@ const SmeeClient = require('smee-client')
 const app = express()
 
 const PORT = 58000
-const channel = process.env.GITHUB_REPOSITORY.replace('/', '-') + '-' + process.env.GITHUB_REF.replace('/', '-')
+const channel = process.env.GITHUB_REPOSITORY.replace('/', '-') + '-' + process.env.GITHUB_REF.replace(/\//g, '-')
 
 const smee = new SmeeClient({
   source: `https://smee.io/${channel}`,
