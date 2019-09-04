@@ -13,9 +13,9 @@ const smee = new SmeeClient({
 
 const events = smee.start()
 
-events.onmessage(evt => {
-  console.log(evt)
-})
+// events.addEventListener('message', evt => {
+//   console.log(evt)
+// })
 
 app.get('/hello', (req, res) => res.send('Hello!'))
 app.post('/events', (req, res) => {
